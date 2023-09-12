@@ -16,11 +16,18 @@
             border: 2px dashed #4e9a06;
             padding: 10px;
             margin-bottom: 20px;
-            transition: border-color 0.5s ease;
+            transition: border-color 0.7s ease;
+        }
+
+        .github-logo {
+            display: block;
+            margin: 0 auto 10px; /* Center the logo and add some spacing */
+            width: 50px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
         }
 
         .cv-header:hover {
-            border-color: #ff9900; /* Change border color on hover */
+            border-color: white; /* Change border color on hover */
         }
 
         .cv-section {
@@ -28,22 +35,22 @@
             padding-left: 20px;
             border-left: 2px dotted #4e9a06;
             margin-bottom: 20px;
-            transition: border-color 0.5s ease;
+            transition: border-color 0.7s ease;
         }
 
         .cv-section:hover {
-            border-color: #ff9900; /* Change border color on hover */
+            border-color: white; /* Change border color on hover */
         }
 
         .cv-subsection {
             padding-left: 20px;
             border-left: 2px solid #4e9a06;
             margin-bottom: 70px;
-            transition: border-color 0.5s ease;
+            transition: border-color 0.7s ease;
         }
 
         .cv-subsection:hover {
-            border-color: #ff9900; /* Change border color on hover */
+            border-color: white; /* Change border color on hover */
         }
 
         ul {
@@ -55,19 +62,28 @@
             content: "-";
             margin-right: 10px;
         }
+
+        .cv-subsection:hover .year {
+            color: #4e9a06;
+            transition: color 0.7s ease;
+        }
+
     </style>
 </head>
 
 <body>
     <div class="cv-header">
         <h1>Leon Avshalom</h1>
+        <a href="https://github.com/MrAnderson-1999" target="_blank">
+            <img src="C:\Users\leona\Downloads\image.png" alt="GitHub Logo" class="github-logo">
+        </a>
         <p>DevOps Engineer | leon.avshalom@gmail.com | 054-7363558</p>
     </div>
 
     <div class="cv-section">
         <h2>Professional Experience:</h2>
         <div class="cv-subsection">
-            <p>Teridion : Tier III NOC | 2021 - 2023</p>
+            <p>Teridion : Tier III NOC | <span class="year">2021 - 2023</span></p>
             <ul>
                 <li>Streamlined tasks with Python scripts and API integration.</li>
                 <li>Managed Linux-based environments on multiple cloud providers.</li>
@@ -80,11 +96,11 @@
     <div class="cv-section">
         <h2>Education:</h2>
         <div class="cv-subsection">
-            <p>OpenU Israel | 2023</p>
+            <p>OpenU Israel | <span class="year">2023</span></p>
             <p>Degree: Computer Science - Cybersecurity</p>
         </div>
         <div class="cv-subsection">
-            <p>Amit Atidim Or Akiva | 2014 - 2017</p>
+            <p>Amit Atidim Or Akiva | <span class="year">2014 - 2017</span></p>
             <p>Completed 5 units:</p>
             <ul>
                 <li>Computer science</li>
@@ -98,7 +114,7 @@
     <div class="cv-section">
         <h2>Technical Skills:</h2>
         <div class="cv-subsection">
-            <p>DevOps Experts Course | 2022</p>
+            <p>DevOps Experts Course | <span class="year">2022</span></p>
             <ul>
                 <li>Python, API requests & test automation</li>
                 <li>Jenkins CI, GIT Version control</li>
@@ -107,7 +123,7 @@
             </ul>
         </div>
         <div class="cv-subsection">
-            <p>Computer Science and Python Programming Course | 2020</p>
+            <p>Computer Science and Python Programming Course | <span class="year">2020</span></p>
             <p>Completed at Tel Aviv University</p>
             <p>Studied various data structures and algorithms.</p>
         </div>
@@ -116,7 +132,7 @@
     <div class="cv-section">
         <h2>Military Service:</h2>
         <div class="cv-subsection">
-            <p>Network Manager / Communication Technician Team Leader: Unit 502 | 2018 - 2021</p>
+            <p>Network Manager / Communication Technician Team Leader: Unit 502 | <span class="year">2018 - 2021</span></p>
             <ul>
                 <li>Handled communication and computer malfunctions at military sites.</li>
             </ul>
