@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            font-size: 1.5rem
+        }
+
+        .cv-header {
+            text-align: center;
+            border: 2px dashed #4e9a06;
+            padding: 10px;
+            margin-bottom: 20px;
+            transition: border-color 0.5s ease;
+        }
+
+        .cv-header:hover {
+            border-color: #ff9900; /* Change border color on hover */
+        }
+
+        .cv-section {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px dotted #4e9a06;
+            margin-bottom: 20px;
+            transition: border-color 0.5s ease;
+        }
+
+        .cv-section:hover {
+            border-color: #ff9900; /* Change border color on hover */
+        }
+
+        .cv-subsection {
+            padding-left: 20px;
+            border-left: 2px solid #4e9a06;
+            margin-bottom: 70px;
+            transition: border-color 0.5s ease;
+        }
+
+        .cv-subsection:hover {
+            border-color: #ff9900; /* Change border color on hover */
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li::before {
+            content: "-";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-header">
+        <h1>Leon Avshalom</h1>
+        <p>DevOps Engineer | leon.avshalom@gmail.com | 054-7363558</p>
+    </div>
+
+    <div class="cv-section">
+        <h2>Professional Experience:</h2>
+        <div class="cv-subsection">
+            <p>Teridion : Tier III NOC | 2021 - 2023</p>
+            <ul>
+                <li>Streamlined tasks with Python scripts and API integration.</li>
+                <li>Managed Linux-based environments on multiple cloud providers.</li>
+                <li>Maintained 500+ Ipsec protocol connections.</li>
+                <li>Analyzed data and resolved incidents using SignalFX, Kibana, and Catchpoint.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Education:</h2>
+        <div class="cv-subsection">
+            <p>OpenU Israel | 2023</p>
+            <p>Degree: Computer Science - Cybersecurity</p>
+        </div>
+        <div class="cv-subsection">
+            <p>Amit Atidim Or Akiva | 2014 - 2017</p>
+            <p>Completed 5 units:</p>
+            <ul>
+                <li>Computer science</li>
+                <li>Physics</li>
+                <li>Mathematics</li>
+                <li>English</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Technical Skills:</h2>
+        <div class="cv-subsection">
+            <p>DevOps Experts Course | 2022</p>
+            <ul>
+                <li>Python, API requests & test automation</li>
+                <li>Jenkins CI, GIT Version control</li>
+                <li>Docker, K8S, HELM, AWS Cloud</li>
+                <li>Terraform, Configuration management with Ansible</li>
+            </ul>
+        </div>
+        <div class="cv-subsection">
+            <p>Computer Science and Python Programming Course | 2020</p>
+            <p>Completed at Tel Aviv University</p>
+            <p>Studied various data structures and algorithms.</p>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Military Service:</h2>
+        <div class="cv-subsection">
+            <p>Network Manager / Communication Technician Team Leader: Unit 502 | 2018 - 2021</p>
+            <ul>
+                <li>Handled communication and computer malfunctions at military sites.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Languages:</h2>
+        <ul>
+            <li>Hebrew: Native</li>
+            <li>English: Fluent</li>
+            <li>Russian: Proficient</li>
+        </ul>
+    </div>
+</body>
+
+</html>
