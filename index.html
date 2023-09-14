@@ -22,7 +22,7 @@
         .github-logo {
             display: block;
             margin: 0 auto 10px; /* Center the logo and add some spacing */
-            width: 50px; /* Adjust the width as needed */
+            width: 100px;
             height: auto; /* Maintain aspect ratio */
         }
 
@@ -68,18 +68,26 @@
             transition: color 0.7s ease;
         }
 
+        .link-container {
+            text-align: center;
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
     </style>
 </head>
 
 <body>
     <div class="cv-header">
         <h1>Leon Avshalom</h1>
-        <a href="https://github.com/MrAnderson-1999" target="_blank">
-            <img src="/git.png" alt="GitHub Logo" class="github-logo">
-        </a>
-        <a href="http://ec2-54-238-237-38.ap-northeast-1.compute.amazonaws.com:1337/" target="_blank">
-            <img src="/web.png" alt="Web logo" class="github-logo">
-        </a>
+        <div class="link-container">
+            <a href="https://github.com/MrAnderson-1999" target="_blank">
+                <img src="git.png" alt="GitHub Logo" class="github-logo">
+            </a>
+            <a href="http://ec2-54-238-237-38.ap-northeast-1.compute.amazonaws.com:1337/" target="_blank">
+                <img src="web.png" alt="Web logo" class="github-logo">
+            </a>
+        </div>
         <p>DevOps Engineer | leon.avshalom@gmail.com | 054-7363558</p>
     </div>
 
