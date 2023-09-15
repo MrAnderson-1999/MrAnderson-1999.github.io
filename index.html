@@ -19,18 +19,16 @@
             transition: border-color 0.7s ease;
         }
 
-        .github-logo {
+        .github-logo, .web-logo {
             display: block;
             margin: 0 auto 10px; /* Center the logo and add some spacing */
-            width: 90px;
+            width: auto;
             height: auto; /* Maintain aspect ratio */
-        }
+            max-width: 150px; /* Set a maximum width for the logo */
+            max-height: 90px; /* Set a maximum height for the logo */
+            min-width: 50px;
+            min-height: 30px;
 
-        .web-logo {
-            display: block;
-            margin: 0 auto 10px; /* Center the logo and add some spacing */
-            width: 130px;
-            height: auto; /* Maintain aspect ratio */
         }
 
         .cv-header:hover {
