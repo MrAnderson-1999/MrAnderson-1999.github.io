@@ -1,197 +1,688 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leon Avshalom · DevOps Team Lead</title>
+<meta name="description" content="Leon Avshalom — DevOps Team Lead at Moveo Group HLS. AWS and Azure infrastructure-as-code, multi-cluster Kubernetes, GitOps delivery, observability and SOC 2 security compliance.">
+<meta name="author" content="Leon Avshalom">
+<meta property="og:title" content="Leon Avshalom · DevOps Team Lead">
+<meta property="og:description" content="Multi-cluster Kubernetes, infrastructure-as-code, GitOps delivery and security compliance across AWS, Azure and air-gapped environments.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="profile.jpeg">
+<meta name="theme-color" content="#134e6f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23134e6f'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='%23fff' text-anchor='middle'%3ELA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f5f7;
+    --surface: #ffffff;
+    --ink: #102330;
+    --body: #3d4f5c;
+    --muted: #6a7b87;
+    --line: #d6dfe5;
+    --accent: #134e6f;
+    --accent-2: #1e7aa8;
+    --accent-soft: #e2edf3;
+    --live: #1f9d6b;
+    --live-glow: rgba(31, 157, 107, .28);
+    --nav-bg: #134e6f;
+    --nav-ink: rgba(255, 255, 255, .72);
+    --nav-ink-active: #ffffff;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --text: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --nav-w: 272px;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1820;
+      --surface: #13222c;
+      --ink: #e8f0f4;
+      --body: #b3c3cd;
+      --muted: #82949f;
+      --line: #243a48;
+      --accent: #6cc3e8;
+      --accent-2: #8fd3f0;
+      --accent-soft: #17303e;
+      --live: #3fcf93;
+      --live-glow: rgba(63, 207, 147, .3);
+      --nav-bg: #0a2333;
+    }
+  }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Leon Avshalom Resume">
-    <meta name="author" content="Leon Avshalom">
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--body);
+    font: 400 16px/1.62 var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent-2); }
+  :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 4px; }
+  b, strong { color: var(--ink); font-weight: 600; }
 
-    <title>Leon Avshalom's Resume Website</title>
+  /* ---------- Side navigation ---------- */
+  #sideNav {
+    position: fixed; inset: 0 auto 0 0; width: var(--nav-w); z-index: 20;
+    background: var(--nav-bg); color: var(--nav-ink-active);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 32px 24px;
+  }
+  .brand { display: block; text-decoration: none; color: inherit; text-align: center; }
+  .brand img {
+    width: 152px; height: 152px; object-fit: cover; object-position: 50% 30%; border-radius: 50%;
+    border: 6px solid rgba(255, 255, 255, .16); display: block; margin: 0 auto;
+  }
+  .brand-name { display: none; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+  .nav-list { list-style: none; margin-top: 36px; width: 100%; max-width: 180px; }
+  .nav-list a {
+    display: flex; align-items: center; gap: 12px; padding: 7px 0;
+    color: var(--nav-ink); text-decoration: none; font-weight: 500; font-size: 1rem;
+    transition: color .2s;
+  }
+  .nav-list a::before {
+    content: ""; width: 14px; height: 2px; background: currentColor; opacity: .5;
+    transition: width .25s, opacity .25s;
+  }
+  .nav-list a:hover { color: var(--nav-ink-active); }
+  .nav-list a.active { color: var(--nav-ink-active); }
+  .nav-list a.active::before { width: 28px; opacity: 1; }
+  .nav-toggle { display: none; }
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  /* ---------- Slides ---------- */
+  .page { margin-left: var(--nav-w); }
+  .slide {
+    min-height: 100vh; min-height: 100svh; display: flex; align-items: center;
+    padding: 72px 64px 104px; border-bottom: 1px solid var(--line);
+  }
+  .slide > .inner { width: 100%; max-width: 980px; }
+  h2 {
+    font-family: var(--display); font-weight: 800; color: var(--ink);
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem); letter-spacing: -.03em; line-height: 1; margin-bottom: 36px;
+  }
+  h3 { font-family: var(--display); font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+  /* About */
+  .hello { font-size: 1.05rem; color: var(--muted); margin-bottom: 10px; }
+  h1 {
+    font-family: var(--display); font-weight: 800; color: var(--ink);
+    font-size: clamp(2.9rem, 8vw, 6.2rem); line-height: .92; letter-spacing: -.035em;
+  }
+  .role-line {
+    margin-top: 18px; font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem); color: var(--accent); letter-spacing: -.01em;
+  }
+  .lede { margin-top: 22px; max-width: 62ch; font-size: 1.12rem; }
+  .actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; min-height: 44px;
+    padding: 10px 18px; border-radius: 10px; font-weight: 500; font-size: .95rem;
+    text-decoration: none; border: 1px solid var(--line); color: var(--ink); background: var(--surface);
+    transition: border-color .15s, background-color .15s;
+  }
+  .btn:hover { border-color: var(--accent-2); color: var(--ink); }
+  .btn svg { width: 17px; height: 17px; fill: currentColor; flex: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--bg); }
 
-    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+  /* Career pipeline */
+  .pipeline { margin-top: 56px; }
+  .pipeline-caption { font-size: .9rem; color: var(--muted); margin-bottom: 14px; }
+  .stages { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+  .stages::before, .stages::after {
+    content: ""; position: absolute; left: 9px; right: 9px; top: 9px; height: 2px; background: var(--line);
+  }
+  .stages::after {
+    background: linear-gradient(90deg, var(--accent), var(--live));
+    transform-origin: left; animation: track 1.6s cubic-bezier(.6,.05,.25,1) .2s both;
+  }
+  .stage { position: relative; padding: 32px 18px 0 0; }
+  .stage .node {
+    position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent); z-index: 1;
+    animation: node .35s ease-out both;
+  }
+  .stage:nth-child(1) .node { animation-delay: .25s; }
+  .stage:nth-child(2) .node { animation-delay: .65s; }
+  .stage:nth-child(3) .node { animation-delay: 1.05s; }
+  .stage:nth-child(4) .node { animation-delay: 1.5s; }
+  .stage .node::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--accent); }
+  .stage.live .node { border-color: var(--live); }
+  .stage.live .node::after { background: var(--live); }
+  .stage.live .node::before {
+    content: ""; position: absolute; inset: -6px; border-radius: 50%;
+    box-shadow: 0 0 0 0 var(--live-glow); animation: pulse 2.4s ease-out 2s infinite;
+  }
+  .stage .when { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stage .what { font-family: var(--display); font-weight: 700; color: var(--ink); font-size: 1.08rem; line-height: 1.25; margin-top: 2px; }
+  .stage .where { font-size: .92rem; }
+  .stage.live .when { color: var(--live); font-weight: 600; }
 
-    <!-- Custom styles for this template -->
-    <link href="resume.min.css" rel="stylesheet">
-    
+  @keyframes track { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes track-v { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes node { from { transform: scale(.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--live-glow); }
+    70% { box-shadow: 0 0 0 12px rgba(0,0,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+  }
+
+  /* Experience */
+  .job + .job { margin-top: 48px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .job h3 { font-size: 1.4rem; line-height: 1.25; }
+  .org { color: var(--accent); font-weight: 500; margin-top: 2px; }
+  .dates { color: var(--muted); font-size: .92rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .promo { margin-top: 8px; font-size: .92rem; color: var(--muted); }
+  .promo b { font-weight: 500; color: var(--body); }
+  .job ul { list-style: none; margin-top: 16px; }
+  .job li { position: relative; padding-left: 20px; max-width: 76ch; }
+  .job li + li { margin-top: 9px; }
+  .job li::before {
+    content: ""; position: absolute; left: 2px; top: .78em; width: 7px; height: 2px; background: var(--accent-2);
+  }
+  .delivered-title { margin-top: 28px; font-weight: 600; color: var(--ink); }
+  .delivered { margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .delivered div {
+    padding: 14px 16px; border-left: 3px solid var(--accent-2); background: var(--surface);
+    border-radius: 0 10px 10px 0;
+  }
+  .delivered strong { display: block; font-family: var(--display); font-weight: 700; font-size: 1rem; line-height: 1.3; }
+  .delivered span { font-size: .9rem; color: var(--muted); }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; }
+  .skill h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; }
+  .tags li {
+    font-size: .86rem; line-height: 1.3; padding: 5px 10px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--ink);
+  }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .project { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+  .project h3 { font-size: 1.2rem; }
+  .project .at { font-size: .9rem; color: var(--accent); font-weight: 500; }
+  .project p { margin-top: 10px; }
+
+  /* Education & languages */
+  .edu-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 56px; }
+  .edu-grid h3.block-title { font-size: 1.3rem; margin-bottom: 14px; }
+  .edu { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .edu:first-of-type { border-top: 1px solid var(--line); }
+  .edu h3 { font-size: 1.08rem; }
+  .edu p { grid-column: 1 / -1; font-size: .96rem; }
+  .langs { list-style: none; }
+  .langs li { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .langs li:first-child { border-top: 1px solid var(--line); }
+  .langs li span:first-child { font-weight: 600; color: var(--ink); }
+  .langs li span:last-child { color: var(--muted); }
+  .closing { margin-top: 56px; font-size: .95rem; color: var(--muted); }
+
+
+  /* ---------- Interaction ---------- */
+  .slide { position: relative; }
+  .stage-link { display: block; color: inherit; text-decoration: none; border-radius: 8px; transition: transform .2s; }
+  .stage-link:hover { transform: translateY(-2px); color: inherit; }
+  .stage-link:hover .what { color: var(--accent); }
+  .stage-link .what::after { content: " \2193"; opacity: 0; transition: opacity .2s; }
+  .stage-link:hover .what::after, .stage-link:focus-visible .what::after { opacity: 1; }
+
+  .delivered a {
+    display: block; padding: 14px 16px; border-left: 3px solid var(--accent-2); background: var(--surface);
+    border-radius: 0 10px 10px 0; color: var(--body); text-decoration: none;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .delivered a:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -14px rgba(16, 35, 48, .45); border-left-color: var(--live); color: var(--body); }
+  .delivered .hint { display: block; margin-top: 8px; font-style: normal; font-size: .82rem; font-weight: 500; color: var(--accent); opacity: 0; transform: translateY(-3px); transition: opacity .2s, transform .2s; }
+  .delivered a:hover .hint, .delivered a:focus-visible .hint { opacity: 1; transform: none; }
+  .delivered-title .sub { font-weight: 400; color: var(--muted); font-size: .9rem; }
+  @media (hover: none) { .delivered .hint { opacity: 1; transform: none; } }
+
+  .section-note { margin: -20px 0 28px; color: var(--muted); }
+  .tag {
+    font: inherit; font-size: .86rem; line-height: 1.3; padding: 5px 10px; border-radius: 6px; cursor: pointer;
+    background: var(--accent-soft); color: var(--ink); border: 1px solid transparent;
+    transition: background-color .2s, color .2s, transform .2s, border-color .2s;
+  }
+  .tags li { padding: 0; background: none; }
+  .tag:hover { border-color: var(--accent-2); transform: translateY(-1px); }
+  .tag.lit { background: var(--accent); color: var(--bg); animation: pop .5s ease-out; }
+  .tag.lit.nomatch { background: var(--accent-soft); color: var(--ink); }
+  @keyframes pop { 0% { transform: scale(.9); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+  mark.hit { background: none; color: inherit; box-shadow: inset 0 -.45em 0 color-mix(in srgb, var(--live) 35%, transparent); border-radius: 2px; transition: box-shadow .4s; }
+  .job li.hit-row { animation: rowflash 2.4s ease-out; }
+  @keyframes rowflash { 0%, 30% { background: color-mix(in srgb, var(--live) 14%, transparent); } 100% { background: transparent; } }
+  .job.arrived { animation: arrive 1.8s ease-out; }
+  @keyframes arrive { 0% { box-shadow: -14px 0 0 -11px var(--live); } 70% { box-shadow: -14px 0 0 -11px var(--live); } 100% { box-shadow: -14px 0 0 -11px transparent; } }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; z-index: 30; transform: translate(-50%, 20px); opacity: 0;
+    background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: .92rem;
+    pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100% - 32px);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  @media (min-width: 992px) { .toast { left: calc(50% + var(--nav-w) / 2); } }
+
+  .next {
+    position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+    display: inline-flex; flex-direction: column; align-items: center; gap: 0;
+    color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500;
+  }
+  .next svg { width: 26px; height: 26px; fill: currentColor; animation: nudge 2s ease-in-out infinite; }
+  .next:hover { color: var(--accent); }
+  @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  .to-top { font-weight: 500; }
+
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease-out, transform .6s ease-out; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .skills .reveal:nth-child(2n), .js .projects .reveal:nth-child(2) { transition-delay: .08s; }
+  .js .projects .reveal:nth-child(3) { transition-delay: .16s; }
+  .project { transition: transform .2s, border-color .2s; }
+  .project:hover { transform: translateY(-3px); border-color: var(--accent-2); }
+
+  .progress { position: fixed; top: 0; left: var(--nav-w); right: 0; height: 3px; z-index: 25; background: linear-gradient(90deg, var(--accent), var(--live)); transform-origin: left; transform: scaleX(0); }
+  @media (max-width: 991px) { .progress { left: 0; } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .delivered, .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 991px) {
+    .next { display: none; }
+    #sideNav {
+      inset: 0 0 auto 0; width: auto; height: auto; flex-direction: row; flex-wrap: wrap;
+      justify-content: space-between; padding: 10px 16px;
+    }
+    .brand img { display: none; }
+    .brand-name { display: block; }
+    .nav-toggle {
+      display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+      background: transparent; border: 1px solid rgba(255,255,255,.3); border-radius: 8px; color: #fff; cursor: pointer;
+    }
+    .nav-toggle svg { width: 22px; height: 22px; fill: currentColor; }
+    .nav-list { display: none; flex-basis: 100%; max-width: none; margin-top: 8px; padding-bottom: 6px; }
+    #sideNav.open .nav-list { display: block; }
+    .nav-list a { padding: 10px 0; }
+    .page { margin-left: 0; }
+    .slide { padding: 96px 32px 64px; min-height: auto; }
+    .slide#about { min-height: 100vh; min-height: 100svh; }
+    .skills, .edu-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .slide { padding: 88px 16px 56px; }
+    .stages { grid-template-columns: 1fr; gap: 22px; }
+    .stages::before, .stages::after { left: 9px; right: auto; top: 9px; bottom: 9px; width: 2px; height: auto; }
+    .stages::after { background: linear-gradient(180deg, var(--accent), var(--live)); transform-origin: top; animation-name: track-v; }
+    .stage { padding: 0 0 0 36px; }
+    .delivered, .projects { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+  @media print {
+    #sideNav, .actions, .closing, .next, .progress, .toast { display: none; }
+    .js .reveal { opacity: 1; transform: none; }
+    .page { margin-left: 0; }
+    .slide { min-height: auto; padding: 24px 0; break-inside: avoid-page; }
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
 </head>
-
 <body id="page-top">
+<script>document.documentElement.classList.add("js")</script>
+<div class="progress" aria-hidden="true"></div>
+<div class="toast" role="status" aria-live="polite"></div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Leon Avshalom</span>
-            <span class="d-none d-lg-block">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile.jpg" alt="">
-            </span>
+<nav id="sideNav" aria-label="Sections">
+  <a class="brand" href="#about">
+    <span class="brand-name">Leon Avshalom</span>
+    <img src="profile.jpeg" alt="Portrait of Leon Avshalom" width="650" height="750">
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Toggle navigation">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+  </button>
+  <ul class="nav-list" id="navList">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <section class="slide" id="about">
+    <div class="inner">
+      <p class="hello">Hi, I'm</p>
+      <h1>Leon<br>Avshalom</h1>
+      <p class="role-line">DevOps Team Lead at Moveo Group HLS</p>
+      <p class="lede">
+        I build and secure the platforms production runs on: AWS and Azure infrastructure-as-code,
+        multi-cluster Kubernetes, GitOps delivery and observability. I also served as deputy CISO
+        for a SOC&nbsp;2 Type&nbsp;II program.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="resume.pdf" download="Leon Avshalom - DevOps Team Lead.pdf">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1zM5 19a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z"/></svg>
+          Download CV (PDF)
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#languages">Languages</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <a class="btn" href="mailto:leon.avshalom@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.3l8 5.2 8-5.2V7H4zm16 2.7-7.46 4.85a1 1 0 0 1-1.08 0L4 9.7V17h16V9.7z"/></svg>
+          leon.avshalom@gmail.com
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/leon-avshalom/" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/MrAnderson-1999" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="tel:+972547363558">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.12.37 2.33.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.2 2.48.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2z"/></svg>
+          054-7363558
+        </a>
+      </div>
 
-    <div class="container-fluid p-0">
-
-        <!-- About Section -->
-        <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-            <div class="my-auto">
-                <h1 class="mb-0">Leon Avshalom</h1>
-                <div class="subheading mb-5">054-7363558 | 
-                    <a href="mailto:leon.avshalom@gmail.com">leon.avshalom@gmail.com</a>
-                </div>
-                <p class="lead mb-5">
-                    DevSecOps Engineer with a self-taught, hands-on background delivering secure, compliant, and resilient solutions. Driven by continuous improvement, adaptability, and a passion for innovative infrastructure, I’m eager to thrive in aspirational, fast-paced environments.
-                </p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/leon-avshalom/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/MrAnderson-1999" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fas fa-globe"></i>
-                    </a>
-                    <a href="resume.pdf" target="_blank">
-                        <i class="fas fa-file-alt"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-            <div class="subheading mb-3">Skills</div>
-            <ul class="list-icons custom-list">
-                <li class="mb-5">
-                    <i class="devicon-python-plain"></i>
-                    Python: Automation, Scripting, Application Development
-                </li>
-                <li class="mb-5">
-                    <i class="devicon-jenkins-plain"></i>
-                    CI/CD: Jenkins, Version Control, Collaborative Development
-                </li>
-                <li class="mb-5">
-                    <i class="devicon-docker-plain"></i>
-                    Containerization & Orchestration: Docker, Kubernetes
-                </li>
-                <li class="mb-5">
-                    <i class="devicon-amazonwebservices-plain"></i>
-                    Cloud & Infrastructure: Multi-Cloud, IaC, Cloud Governance
-                </li>
-                <li class="mb-5">
-                    <i class="devicon-ansible-plain"></i>
-                    Configuration Management: Automation & Policy Enforcement
-                </li>
-                <li class="mb-5">
-                    <i class="fas fa-shield-alt"></i>
-                    Security & Compliance: Shift-Left, Penetration Testing, Audits
-                </li>
-            </ul>
-        </section>
-        
-        <!-- Experience Section -->
-        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-            <div class="subheading mb-3">Work Experience</div>
-            
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="resume-content">
-                    <h3 class="mb-0">Tier III NOC, Teridion</h3>
-                    <div class="subheading mb-3 date">2021 - 2023</div>
-                    <p>Maintained and monitored Linux-based environments across a global WAN spanning more than a dozen cloud providers. Automated repetitive tasks with Bash scripts and developed a Python-based FinOps automation project outside regular duties, earning special recognition and additional compensation.</p>
-                </div>
-            </div>
-            
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="resume-content">
-                    <h3 class="mb-0">DevSecOps, MoveoHLS</h3>
-                    <div class="subheading mb-3 date">2023 - 2025</div>
-                    <ul>
-                        <li>Pioneered the DevSecOps function as the first hire, defining long-term strategy and vision for a rapidly evolving team.</li>
-                        <li>Oversaw multiple high-security, compliance-driven projects from planning to production, implementing shift-left security, penetration testing, and continuous compliance audits.</li>
-                        <li>Consulted with development teams to integrate secure coding standards, CI/CD pipelines, and cloud governance policies into new features.</li>
-                        <li>Led technical workshops, presentations, and training sessions for varied audiences, fostering a strong DevOps culture.</li>
-                        <li>Managed relationships with Israeli and international clients, maintaining stringent security controls in air-gapped, on-premises environments and scalable, cloud-based infrastructures.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
-            <div class="subheading mb-3">Education</div>
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="resume-content">
-                    <h3 class="mb-0">B.Sc OpenU Israel</h3>
-                    <div class="subheading mb-3 date">2025</div>
-                    <p>First year - Computer Science with orientation in Cybersecurity.</p>
-                </div>
-            </div>
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="resume-content">
-                    <h3 class="mb-0">Independent Technology Learning</h3>
-                    <div class="subheading mb-3 date">2022</div>
-                    <p>Completed a ‘DevOps Experts’ course, acquiring a broad suite of modern DevOps tools and methodologies.</p>
-                </div>
-            </div>
-            <div class="subheading mb-3">Military Service</div>
-            <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-                <div class="resume-content">
-                    <h3 class="mb-0">Network Manager / Communication Technician Team Leader: Unit 502</h3>
-                    <div class="subheading mb-3 date">2018 - 2021</div>
-                    <p>Responded to communication and computer malfunctions in real-time at various military sites, including operational military bases, intelligence bases, Rafael buildings, MLM, and the Ministry of Defense.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Languages Section -->
-        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="languages">
-            <div class="subheading mb-3">Languages</div>
-            <ul class="list-icons custom-list">
-                <li>Hebrew - Native</li>
-                <li>English - Fluent</li>
-                <li>Russian - Proficient</li>
-            </ul>
-        </section>
+      <div class="pipeline" aria-label="Career path">
+        <p class="pipeline-caption">From military network operations to leading a DevOps team. Pick a stop to read more.</p>
+        <ol class="stages">
+          <li class="stage"><span class="node" aria-hidden="true"></span>
+            <a class="stage-link" href="#job-unit502"><div class="when">2018 – 2021</div><div class="what">Network Manager / Team Leader</div><div class="where">IDF, Unit 502</div></a></li>
+          <li class="stage"><span class="node" aria-hidden="true"></span>
+            <a class="stage-link" href="#job-teridion"><div class="when">2021 – 2023</div><div class="what">NOC Engineer, Tier III</div><div class="where">Teridion</div></a></li>
+          <li class="stage"><span class="node" aria-hidden="true"></span>
+            <a class="stage-link" href="#job-moveo"><div class="when">2023 – 2026</div><div class="what">DevSecOps Engineer</div><div class="where">Moveo Group HLS</div></a></li>
+          <li class="stage live"><span class="node" aria-hidden="true"></span>
+            <a class="stage-link" href="#job-moveo"><div class="when">Aug 2026 – now</div><div class="what">DevOps Team Lead</div><div class="where">Moveo Group HLS</div></a></li>
+        </ol>
+      </div>
     </div>
+    <a class="next" href="#experience" aria-label="Next: Experience"><span>Experience</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.6 5.4 10l1.4-1.4 5.2 5.2 5.2-5.2 1.4 1.4z"/></svg></a>
+  </section>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <section class="slide" id="experience">
+    <div class="inner">
+      <h2 class="reveal">Experience</h2>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="resume.min.js"></script>
+      <article class="job reveal" id="job-moveo">
+        <div class="job-head">
+          <h3>DevOps Team Lead</h3>
+          <span class="dates">Aug 2026 – Present</span>
+        </div>
+        <div class="org">Moveo Group HLS</div>
+        <p class="promo">Previously <b>DevSecOps Engineer</b>, 2023 – 2026</p>
+        <ul>
+          <li>Lead the DevOps team: set platform standards, review infrastructure and pipeline changes, and mentor engineers.</li>
+          <li>Led DevSecOps initiatives for high-scale production distributed systems in Linux environments across AWS, Azure and on-prem infrastructure, supporting enterprise and government clients, including end-to-end ownership as sole DevOps engineer.</li>
+          <li>Designed and implemented security-focused infrastructure-as-code using Terraform and Terragrunt across multi-account environments, including IAM, networking (VPC/VNET, DMZ segmentation, WAF), Kubernetes (EKS/AKS) and observability stacks.</li>
+          <li>Built and operated multi-cluster Kubernetes platforms with Istio service mesh, autoscaling (Karpenter, KEDA) and GitOps delivery via ArgoCD and Helm.</li>
+          <li>Built and maintained secure CI/CD pipelines (GitHub Actions, ArgoCD) with build-once image promotion, keyless OIDC deploys and rollback, integrating SAST/DAST, dependency scanning, container image scanning and artifact signing.</li>
+          <li>Performed security reviews and threat modeling for cloud-native architectures, including multi-cluster Kubernetes and identity-based access systems (SSO, least-privilege IAM/RBAC, policy-as-code).</li>
+          <li>Acted as <b>deputy CISO on a SOC 2 Type II program</b>: drove security controls implementation, audit readiness, risk assessments and compliance governance.</li>
+        </ul>
+
+        <p class="delivered-title">Key projects delivered <span class="sub">· select one to see the tools it used</span></p>
+        <div class="delivered">
+          <a href="#skills" data-skills="Grafana,Prometheus,Loki,Fluent Bit,Helm"><strong>Air-gapped Kubernetes observability</strong><span>Full monitoring stack for an isolated, on-prem environment</span><em class="hint">See the skills behind it</em></a>
+          <a href="#skills" data-skills="AWS EKS,Istio multi-cluster,Karpenter,Terraform,Terragrunt,Kyverno"><strong>FedRAMP-aligned multi-cluster EKS</strong><span>Platform architecture for government workloads</span><em class="hint">See the skills behind it</em></a>
+          <a href="#skills" data-skills="Azure AKS,VNET,Terraform,ArgoCD,Helm"><strong>Azure AKS migration</strong><span>Large-scale production systems moved to AKS</span><em class="hint">See the skills behind it</em></a>
+          <a href="#skills" data-skills="SOC 2 Type II,Threat modeling,Trivy,Gitleaks,SAST/DAST"><strong>SOC 2 certification</strong><span>Carried the program through to completion</span><em class="hint">See the skills behind it</em></a>
+          <a href="#skills" data-skills="Grafana,Loki,Tempo,Mimir,Alloy,OpenTelemetry"><strong>LGTM observability</strong><span>Loki, Grafana, Tempo and Mimir with OpenTelemetry</span><em class="hint">See the skills behind it</em></a>
+          <a href="#skills" data-skills="Claude Code agents &amp; plugins,AI-in-CI automation,GitHub Actions"><strong>AI agents in CI</strong><span>Automated code review and security triage</span><em class="hint">See the skills behind it</em></a>
+        </div>
+      </article>
+
+      <article class="job reveal" id="job-teridion">
+        <div class="job-head">
+          <h3>NOC Engineer, Tier III</h3>
+          <span class="dates">2021 – 2023</span>
+        </div>
+        <div class="org">Teridion</div>
+        <ul>
+          <li>24/7 operations and incident response for Linux-based SD-WAN infrastructure spanning 12+ cloud providers; owned SLA tracking, escalations and post-incident analysis.</li>
+          <li>Automated triage, diagnostics and playbooks in Python and Bash; contributed to internal FinOps and cost/performance tooling.</li>
+        </ul>
+      </article>
+
+      <article class="job reveal" id="job-unit502">
+        <div class="job-head">
+          <h3>Network Manager / Team Leader</h3>
+          <span class="dates">2018 – 2021</span>
+        </div>
+        <div class="org">IDF, Unit 502</div>
+        <ul>
+          <li>Led real-time response to communication and computing failures across 20+ defense sites, deploying and maintaining critical infrastructure for military and intelligence bases, Rafael and Ministry of Defense facilities.</li>
+        </ul>
+      </article>
+    </div>
+    <a class="next" href="#skills" aria-label="Next: Skills"><span>Skills</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.6 5.4 10l1.4-1.4 5.2 5.2 5.2-5.2 1.4 1.4z"/></svg></a>
+  </section>
+
+  <section class="slide" id="skills">
+    <div class="inner">
+      <h2 class="reveal">Skills</h2>
+      <p class="section-note">Select a tool to see where I used it.</p>
+      <div class="skills">
+        <div class="skill reveal"><h3>Cloud</h3><ul class="tags"><li><button type="button" class="tag">AWS EKS</button></li><li><button type="button" class="tag">VPC</button></li><li><button type="button" class="tag">IAM &amp; Identity Center</button></li><li><button type="button" class="tag">RDS</button></li><li><button type="button" class="tag">KMS</button></li><li><button type="button" class="tag">WAF</button></li><li><button type="button" class="tag">Verified Access</button></li><li><button type="button" class="tag">Bedrock</button></li><li><button type="button" class="tag">CloudWatch</button></li><li><button type="button" class="tag">Azure AKS</button></li><li><button type="button" class="tag">VNET</button></li></ul></div>
+        <div class="skill reveal"><h3>Kubernetes &amp; GitOps</h3><ul class="tags"><li><button type="button" class="tag">Helm</button></li><li><button type="button" class="tag">ArgoCD</button></li><li><button type="button" class="tag">Istio multi-cluster</button></li><li><button type="button" class="tag">Cilium</button></li><li><button type="button" class="tag">Karpenter</button></li><li><button type="button" class="tag">KEDA</button></li><li><button type="button" class="tag">cert-manager</button></li><li><button type="button" class="tag">External Secrets</button></li><li><button type="button" class="tag">Docker</button></li></ul></div>
+        <div class="skill reveal"><h3>IaC &amp; CI/CD</h3><ul class="tags"><li><button type="button" class="tag">Terraform</button></li><li><button type="button" class="tag">Terragrunt</button></li><li><button type="button" class="tag">GitHub Actions</button></li><li><button type="button" class="tag">OIDC</button></li><li><button type="button" class="tag">Reusable workflows</button></li><li><button type="button" class="tag">Jenkins</button></li><li><button type="button" class="tag">Ansible</button></li></ul></div>
+        <div class="skill reveal"><h3>Security</h3><ul class="tags"><li><button type="button" class="tag">SOC 2 Type II</button></li><li><button type="button" class="tag">Threat modeling</button></li><li><button type="button" class="tag">Kyverno</button></li><li><button type="button" class="tag">Rego</button></li><li><button type="button" class="tag">kube-bench (CIS)</button></li><li><button type="button" class="tag">Trivy</button></li><li><button type="button" class="tag">Gitleaks</button></li><li><button type="button" class="tag">SAST/DAST</button></li><li><button type="button" class="tag">Keycloak</button></li><li><button type="button" class="tag">OAuth2/OIDC</button></li><li><button type="button" class="tag">CNAPP/CSPM</button></li><li><button type="button" class="tag">Burp Suite</button></li></ul></div>
+        <div class="skill reveal"><h3>Observability</h3><ul class="tags"><li><button type="button" class="tag">Grafana</button></li><li><button type="button" class="tag">Prometheus</button></li><li><button type="button" class="tag">Loki</button></li><li><button type="button" class="tag">Tempo</button></li><li><button type="button" class="tag">Mimir</button></li><li><button type="button" class="tag">Alloy</button></li><li><button type="button" class="tag">OpenTelemetry</button></li><li><button type="button" class="tag">Langfuse</button></li><li><button type="button" class="tag">Fluent Bit</button></li><li><button type="button" class="tag">Splunk</button></li></ul></div>
+        <div class="skill reveal"><h3>Data &amp; messaging</h3><ul class="tags"><li><button type="button" class="tag">PostgreSQL</button></li><li><button type="button" class="tag">NATS JetStream</button></li><li><button type="button" class="tag">Kafka (Strimzi)</button></li></ul></div>
+        <div class="skill reveal"><h3>Programming</h3><ul class="tags"><li><button type="button" class="tag">Python</button></li><li><button type="button" class="tag">Bash</button></li><li><button type="button" class="tag">HCL</button></li><li><button type="button" class="tag">Go (basic)</button></li><li><button type="button" class="tag">Node.js</button></li><li><button type="button" class="tag">C</button></li><li><button type="button" class="tag">Rust</button></li></ul></div>
+        <div class="skill reveal"><h3>AI tooling</h3><ul class="tags"><li><button type="button" class="tag">Claude Code agents &amp; plugins</button></li><li><button type="button" class="tag">AI-in-CI automation</button></li><li><button type="button" class="tag">SageMaker</button></li></ul></div>
+      </div>
+    </div>
+    <a class="next" href="#projects" aria-label="Next: Side projects"><span>Side projects</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.6 5.4 10l1.4-1.4 5.2 5.2 5.2-5.2 1.4 1.4z"/></svg></a>
+  </section>
+
+  <section class="slide" id="projects">
+    <div class="inner">
+      <h2 class="reveal">Side projects</h2>
+      <div class="projects">
+        <div class="project reveal"><h3>Security community</h3><div class="at">TAMI Hackerspace</div>
+          <p>Run weekly security workshops on CTFs, cloud security and reverse engineering. 50+ sessions so far.</p></div>
+        <div class="project reveal"><h3>Linux From Scratch</h3><div class="at">LFS 12.4</div>
+          <p>Built a custom Linux distribution to learn kernel, boot and system internals.</p></div>
+        <div class="project reveal"><h3>RF &amp; embedded</h3><div class="at">HackRF, RTL-SDR, Arduino</div>
+          <p>SDR and GNU Radio signal analysis, Arduino and RF experiments, a WireGuard VPN and an AI multi-platform UI.</p></div>
+      </div>
+    </div>
+    <a class="next" href="#education" aria-label="Next: Education"><span>Education</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.6 5.4 10l1.4-1.4 5.2 5.2 5.2-5.2 1.4 1.4z"/></svg></a>
+  </section>
+
+  <section class="slide" id="education">
+    <div class="inner">
+      <h2 class="reveal">Education</h2>
+      <div class="edu-grid">
+        <div>
+          <div class="edu reveal"><h3>Open University</h3><span class="dates">Present</span><p>Computer Science and Physics courses</p></div>
+          <div class="edu reveal"><h3>DevOps Experts Bootcamp</h3><span class="dates">2022</span><p>CI/CD, Kubernetes, AWS, Terraform, Ansible</p></div>
+          <div class="edu reveal"><h3>Tel Aviv University</h3><span class="dates">2020</span><p>Computer Science and Python (online campus)</p></div>
+        </div>
+        <div>
+          <h3 class="block-title">Languages</h3>
+          <ul class="langs reveal">
+            <li><span>Hebrew</span><span>Native</span></li>
+            <li><span>English</span><span>Fluent</span></li>
+            <li><span>Russian</span><span>Proficient</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="closing"><a class="to-top" href="#about">Back to top</a><br>Want the full CV? <a href="resume.pdf" download="Leon Avshalom - DevOps Team Lead.pdf">Download the PDF</a> or <a href="mailto:leon.avshalom@gmail.com">send me an email</a>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var nav = document.getElementById('sideNav');
+  var toggle = nav.querySelector('.nav-toggle');
+  var navLinks = Array.prototype.slice.call(nav.querySelectorAll('.nav-list a'));
+  var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var progress = document.querySelector('.progress');
+  var toast = document.querySelector('.toast');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function navOffset() {
+    return window.matchMedia('(max-width: 991px)').matches ? nav.offsetHeight + 12 : 0;
+  }
+
+  // Slide between sections with the same easeInOutExpo glide the original site used
+  function ease(t) {
+    if (t === 0 || t === 1) return t;
+    return t < .5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2;
+  }
+  function slideTo(target, done, extra) {
+    var start = window.scrollY;
+    var end = Math.max(0, target.getBoundingClientRect().top + start - navOffset() - (extra || 0));
+    if (reduce || Math.abs(end - start) < 2) { window.scrollTo(0, end); if (done) done(); return; }
+    var t0 = null, dur = Math.min(1000, 450 + Math.abs(end - start) / 4);
+    function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min((now - t0) / dur, 1);
+      window.scrollTo(0, start + (end - start) * ease(p));
+      if (p < 1) requestAnimationFrame(step); else if (done) done();
+    }
+    requestAnimationFrame(step);
+  }
+  function retrigger(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+
+  var toastTimer;
+  function say(msg) {
+    toast.textContent = msg; toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+
+  // Every in-page link slides instead of jumping
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+
+    if (a.dataset.skills) { showSkills(a.dataset.skills.split(','), a.querySelector('strong').textContent); return; }
+    var isJob = target.classList.contains('job');
+    slideTo(target, function () { if (isJob) retrigger(target, 'arrived'); }, isJob ? 32 : 0);
+    history.replaceState(null, '', a.getAttribute('href'));
+  });
+
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Key project -> light up the tools behind it
+  var tags = Array.prototype.slice.call(document.querySelectorAll('.tag'));
+  function clearTags() { tags.forEach(function (t) { t.classList.remove('lit', 'nomatch'); }); }
+  function showSkills(names, project) {
+    clearTags();
+    var first = null;
+    tags.forEach(function (t) {
+      if (names.indexOf(t.textContent.trim()) !== -1) { t.classList.add('lit'); first = first || t; }
+    });
+    slideTo(document.getElementById('skills'));
+    say(project + ': ' + names.length + ' tools highlighted');
+  }
+
+  // Skill tag -> find where it was used in the experience
+  var bullets = Array.prototype.slice.call(document.querySelectorAll('.job li'));
+  bullets.forEach(function (li) { li.dataset.html = li.innerHTML; });
+  var aliases = {
+    'AWS EKS': ['EKS'], 'Azure AKS': ['AKS', 'Azure'], 'Istio multi-cluster': ['Istio'], 'IAM & Identity Center': ['IAM'],
+    'SOC 2 Type II': ['SOC 2'], 'OAuth2/OIDC': ['OIDC', 'SSO'], 'Rego': ['policy-as-code'], 'Kyverno': ['policy-as-code'],
+    'Reusable workflows': ['GitHub Actions'], 'OIDC': ['OIDC'], 'Trivy': ['container image scanning'],
+    'Gitleaks': ['dependency scanning'], 'Threat modeling': ['threat modeling'], 'VPC': ['VPC'], 'VNET': ['VNET'],
+    'Claude Code agents & plugins': ['AI-agent', 'AI agents'], 'AI-in-CI automation': ['AI-agent', 'AI agents'],
+    'Grafana': ['observability'], 'Prometheus': ['observability'], 'Loki': ['observability'], 'OpenTelemetry': ['observability'],
+    'Docker': ['container'], 'Python': ['Python'], 'Bash': ['Bash']
+  };
+  function escapeRe(x) { return x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  tags.forEach(function (tag) {
+    tag.addEventListener('click', function () {
+      var name = tag.textContent.trim();
+      var terms = [name].concat(aliases[name] || []);
+      var re = new RegExp('(' + terms.map(escapeRe).join('|') + ')', 'gi');
+      var hits = [];
+      bullets.forEach(function (li) {
+        li.innerHTML = li.dataset.html; li.classList.remove('hit-row');
+        var plain = li.textContent;
+        re.lastIndex = 0;
+        if (re.test(plain)) {
+          // highlight only text nodes, keep existing markup intact
+          var walker = document.createTreeWalker(li, NodeFilter.SHOW_TEXT);
+          var nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach(function (n) {
+            re.lastIndex = 0;
+            if (!re.test(n.nodeValue)) return;
+            var span = document.createElement('span');
+            span.innerHTML = n.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(re, '<mark class="hit">$1</mark>');
+            n.parentNode.replaceChild(span, n);
+          });
+          hits.push(li);
+        }
+      });
+      clearTags(); tag.classList.add('lit');
+      if (!hits.length) {
+        tag.classList.add('nomatch'); retrigger(tag, 'lit');
+        say(name + ' is part of my toolkit, outside the bullets above');
+        return;
+      }
+      say(name + ': used in ' + hits.length + (hits.length === 1 ? ' place' : ' places'));
+      slideTo(hits[0], function () { hits.forEach(function (li) { retrigger(li, 'hit-row'); }); }, window.innerHeight * .25);
+    });
+  });
+
+  // Reveal blocks as they come into view
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Highlight the section on screen and fill the progress bar
+  function spy() {
+    var line = window.innerHeight * .35 + navOffset();
+    var current = sections[0];
+    sections.forEach(function (s) { if (s.getBoundingClientRect().top <= line) current = s; });
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (window.scrollY >= max - 2) current = sections[sections.length - 1];
+    progress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    navLinks.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + current.id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+
+  // Keyboard: PageDown/PageUp-style slide hopping with J / K
+  document.addEventListener('keydown', function (e) {
+    if (e.target.closest('input, textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key !== 'j' && e.key !== 'k') return;
+    var idx = navLinks.findIndex(function (a) { return a.classList.contains('active'); });
+    var next = sections[Math.max(0, Math.min(sections.length - 1, idx + (e.key === 'j' ? 1 : -1)))];
+    slideTo(next);
+  });
+})();
+</script>
 </body>
-
 </html>
